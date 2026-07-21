@@ -1,0 +1,10 @@
+query GetPullRequestAuthor($owner: String!, $name: String!, $number: Int!) {
+	repository(owner: $owner, name: $name) {
+		pullRequest(number: $number) {
+			title
+			author {
+				login
+			}
+		}
+	}
+}

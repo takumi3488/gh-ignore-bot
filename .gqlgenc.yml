@@ -1,0 +1,15 @@
+endpoint:
+  url: https://api.github.com/graphql
+  headers:
+    Authorization: "Bearer ${GITHUB_TOKEN}"
+model:
+  package: githubgraphql
+  filename: ./internal/githubgraphql/models_gen.go
+client:
+  package: githubgraphql
+  filename: ./internal/githubgraphql/client.go
+query:
+  - ./query/*.graphql
+generate:
+  clientInterfaceName: "GraphQLClient"
+  onlyUsedModels: true
