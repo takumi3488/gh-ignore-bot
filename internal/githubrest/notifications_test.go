@@ -52,7 +52,7 @@ func TestListPullRequestThreads_PaginatesBeyondFirstPage(t *testing.T) {
 		default:
 			t.Errorf("unexpected page %q", r.URL.Query().Get("page"))
 		}
-		json.NewEncoder(w).Encode(batch)
+		_ = json.NewEncoder(w).Encode(batch)
 	}))
 	defer srv.Close()
 
@@ -141,7 +141,7 @@ func TestListPullRequestThreads_UnreadOnly(t *testing.T) {
 		if got := r.URL.Query().Get("all"); got != "false" {
 			t.Errorf("expected all=false, got %q", got)
 		}
-		json.NewEncoder(w).Encode([]Thread{})
+		_ = json.NewEncoder(w).Encode([]Thread{})
 	}))
 	defer srv.Close()
 
@@ -165,7 +165,7 @@ func TestListPullRequestThreads_Errors(t *testing.T) {
 
 	t.Run("invalid json", func(t *testing.T) {
 		srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-			w.Write([]byte("not json"))
+			_, _ = w.Write([]byte("not json"))
 		}))
 		defer srv.Close()
 		c := &Client{http: srv.Client(), BaseURL: srv.URL}
@@ -181,11 +181,11 @@ func TestListPullRequestThreads_Errors(t *testing.T) {
 				var th Thread
 				th.ID = "99"
 				th.Subject.Type = "PullRequest"
-				json.NewEncoder(w).Encode([]Thread{th})
+				_ = json.NewEncoder(w).Encode([]Thread{th})
 				return
 			}
 			w.Header().Set("Link", fmt.Sprintf(`<%s/notifications?page=2>; rel="next"`, srv.URL))
-			json.NewEncoder(w).Encode([]Thread{})
+			_ = json.NewEncoder(w).Encode([]Thread{})
 		}))
 		defer srv.Close()
 		c := &Client{http: srv.Client(), BaseURL: srv.URL}

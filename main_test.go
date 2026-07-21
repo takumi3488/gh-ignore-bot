@@ -235,7 +235,7 @@ func TestRunAggregatesFailures(t *testing.T) {
 	threads := []githubrest.Thread{prThread("1", validURL), prThread("2", validURL)}
 
 	srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		json.NewEncoder(w).Encode(threads)
+		_ = json.NewEncoder(w).Encode(threads)
 	}))
 	defer srv.Close()
 

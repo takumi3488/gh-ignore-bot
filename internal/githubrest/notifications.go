@@ -56,7 +56,7 @@ func (c *Client) ListPullRequestThreads(ctx context.Context, includeRead bool) (
 		}
 		var batch []Thread
 		err = json.NewDecoder(res.Body).Decode(&batch)
-		res.Body.Close()
+		_ = res.Body.Close()
 		if res.StatusCode != http.StatusOK {
 			return nil, fmt.Errorf("list notifications: unexpected status %s", res.Status)
 		}
@@ -122,7 +122,7 @@ func (c *Client) MarkThreadDone(ctx context.Context, threadID string) error {
 	if err != nil {
 		return fmt.Errorf("mark thread %s done: %w", threadID, err)
 	}
-	res.Body.Close()
+	_ = res.Body.Close()
 	if res.StatusCode == http.StatusNotFound {
 		return nil // already gone from the inbox
 	}

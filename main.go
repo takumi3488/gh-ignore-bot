@@ -126,7 +126,7 @@ func run(ctx context.Context, cfg config, rest *githubrest.Client, gql githubgra
 			return nil
 		})
 	}
-	g.Wait()
+	_ = g.Wait() // goroutines never return an error; failures live in outcomes
 
 	marked, failures := 0, 0
 	for i, t := range threads {
