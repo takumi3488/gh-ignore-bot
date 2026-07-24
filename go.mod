@@ -6,7 +6,7 @@ tool github.com/gqlgo/gqlgenc
 
 require (
 	github.com/gqlgo/gqlgenc v0.38.0
-	golang.org/x/sync v0.21.0
+	golang.org/x/sync v0.22.0
 )
 
 require (
