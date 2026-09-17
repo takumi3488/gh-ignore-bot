@@ -1,6 +1,6 @@
 services:
   jaeger:
-    image: jaegertracing/jaeger:latest@sha256:ede4864215be4cd85bd8c3129a2fea6c5713c5653c7282c429dba123014bc68b
+    image: jaegertracing/jaeger:latest@sha256:3d0ac795ff98aa04d1be04311d2dac6c25b4bfc8322dc02e53bc5b170c5018c3
     ports:
       - "16686:16686" # Jaeger UI
       - "4317:4317"   # OTLP gRPC
