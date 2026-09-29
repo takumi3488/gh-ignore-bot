@@ -12,7 +12,7 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
       - name: Run tests
-        uses: takumi3488/mygha/go/test@de213db9cc9d7b006fe1aa45be1e6b248631b5d7 # main
+        uses: takumi3488/mygha/go/test@490f87943402c3dd0f68c15d268d8e697cce85e0 # main
 
 
   automerge:
