@@ -27,3 +27,7 @@ GraphQL クライアントの再生成（要 `GITHUB_TOKEN`、introspection に�
 ```sh
 GITHUB_TOKEN=$(gh auth token) go generate
 ```
+
+## スポンサー
+
+gh-ignore-bot が役に立ったら、開発・メンテナンスを支援するために [GitHub Sponsors](https://github.com/sponsors/takumi3488) でのスポンサーをご検討ください。
